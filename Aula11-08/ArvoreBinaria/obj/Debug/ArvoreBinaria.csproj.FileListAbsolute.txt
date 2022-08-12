@@ -1,0 +1,8 @@
+D:\Repositorio Local\Faculdade\AED3\Aula11-08\ArvoreBinaria\bin\Debug\ArvoreBinaria.exe.config
+D:\Repositorio Local\Faculdade\AED3\Aula11-08\ArvoreBinaria\bin\Debug\ArvoreBinaria.exe
+D:\Repositorio Local\Faculdade\AED3\Aula11-08\ArvoreBinaria\bin\Debug\ArvoreBinaria.pdb
+D:\Repositorio Local\Faculdade\AED3\Aula11-08\ArvoreBinaria\obj\Debug\ArvoreBinaria.csproj.AssemblyReference.cache
+D:\Repositorio Local\Faculdade\AED3\Aula11-08\ArvoreBinaria\obj\Debug\ArvoreBinaria.csproj.SuggestedBindingRedirects.cache
+D:\Repositorio Local\Faculdade\AED3\Aula11-08\ArvoreBinaria\obj\Debug\ArvoreBinaria.csproj.CoreCompileInputs.cache
+D:\Repositorio Local\Faculdade\AED3\Aula11-08\ArvoreBinaria\obj\Debug\ArvoreBinaria.exe
+D:\Repositorio Local\Faculdade\AED3\Aula11-08\ArvoreBinaria\obj\Debug\ArvoreBinaria.pdb
