@@ -1,0 +1,8 @@
+D:\Repositorio Local\Faculdade\AED3\Aula dia 18-08\Algoritimo de Busca\bin\Debug\Algoritimo de Busca.exe.config
+D:\Repositorio Local\Faculdade\AED3\Aula dia 18-08\Algoritimo de Busca\bin\Debug\Algoritimo de Busca.exe
+D:\Repositorio Local\Faculdade\AED3\Aula dia 18-08\Algoritimo de Busca\bin\Debug\Algoritimo de Busca.pdb
+D:\Repositorio Local\Faculdade\AED3\Aula dia 18-08\Algoritimo de Busca\obj\Debug\BuscaSequencial.csproj.AssemblyReference.cache
+D:\Repositorio Local\Faculdade\AED3\Aula dia 18-08\Algoritimo de Busca\obj\Debug\BuscaSequencial.csproj.SuggestedBindingRedirects.cache
+D:\Repositorio Local\Faculdade\AED3\Aula dia 18-08\Algoritimo de Busca\obj\Debug\BuscaSequencial.csproj.CoreCompileInputs.cache
+D:\Repositorio Local\Faculdade\AED3\Aula dia 18-08\Algoritimo de Busca\obj\Debug\Algoritimo de Busca.exe
+D:\Repositorio Local\Faculdade\AED3\Aula dia 18-08\Algoritimo de Busca\obj\Debug\Algoritimo de Busca.pdb
