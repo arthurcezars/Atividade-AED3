@@ -42,7 +42,16 @@ namespace WinFormsApp1
          */
         private List<string> CarregaDicionario()
         {
-            return new List<string>();
+            List<string> dicionario = new List<string>();
+            using (TextReader tr = new StreamReader("dicionario.txt"))
+            {
+                string line = "";
+                while ((line = tr.ReadLine()) != null)
+                {
+                    dicionario.Add(line.Trim());
+                }
+            }
+            return dicionario;
         }
 
         /*
@@ -157,6 +166,18 @@ namespace WinFormsApp1
                 if (Path.GetExtension(saveFileDialog1.FileName) == ".txt")
                 {
                     richTextBox1.SaveFile(saveFileDialog1.FileName, RichTextBoxStreamType.PlainText);
+                }
+            }
+        }
+
+        // Metodo que salva o dicionario em um arquivo antes de fechar o editor.
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            using (TextWriter tw = new StreamWriter("dicionario.txt"))
+            {
+                foreach (string word in _Dicionario)
+                {
+                    tw.WriteLine(word);
                 }
             }
         }
