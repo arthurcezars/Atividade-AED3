@@ -43,14 +43,20 @@ namespace WinFormsApp1
         private List<string> CarregaDicionario()
         {
             List<string> dicionario = new List<string>();
-            using (TextReader tr = new StreamReader("dicionario.txt"))
+            try
             {
-                string line = "";
-                while ((line = tr.ReadLine()) != null)
+                using (TextReader tr = new StreamReader("dicionario.txt"))
                 {
-                    dicionario.Add(line.Trim());
+                    string line = "";
+                    while ((line = tr.ReadLine()) != null)
+                    {
+                        dicionario.Add(line.Trim());
+                    }
                 }
             }
+            catch (Exception ex)
+            { }
+
             return dicionario;
         }
 
@@ -98,8 +104,16 @@ namespace WinFormsApp1
 
             if (DialogResult == DialogResult.Yes)
             {
-                _Dicionario.Add(texto);
-                MessageBox.Show("Adicionado");
+                if (_Dicionario.Contains(texto.ToLower()))
+                {
+                    MessageBox.Show("A palavra já está no dicionario!", "Dicionario",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    _Dicionario.Add(texto.ToLower());
+                    MessageBox.Show("Adicionado");
+                }
             }
         }
 
@@ -125,7 +139,7 @@ namespace WinFormsApp1
         {
             string text = richTextBox1.Text;
             string[] words = Regex.Matches(text, @"([a-z]|[A-Z]|[0-9])\w+").Cast<Match>().Select(m => m.Value).ToArray();
-            return words.Where(word => !_Dicionario.Contains(word.ToString())).ToArray();
+            return words.Where(word => !_Dicionario.Contains(word.ToString().ToLower())).ToArray();
         }
 
         /*
