@@ -70,6 +70,7 @@ namespace WinFormsApp1
             return dicionario;
         }
 
+        // Metodo que adiciona uma palavra nova ao final do dicionario.
         private void AdicionaDicionario(string word)
         {
             if (_Dicionario == null)
@@ -83,6 +84,16 @@ namespace WinFormsApp1
                 temp[temp.Length - 1] = word.Trim();
                 _Dicionario = temp;
             }
+
+            OrdenaDicionario();
+        }
+
+        /*
+         * Metodo que ordena o dicionario.
+         */
+        private void OrdenaDicionario()
+        {
+            _Dicionario = new BubleSort().Sortear(_Dicionario);
         }
 
         /*
@@ -129,7 +140,7 @@ namespace WinFormsApp1
 
             if (DialogResult == DialogResult.Yes)
             {
-                if (_Dicionario.Contains(texto.ToLower()))
+                if (_Dicionario != null && _Dicionario.Contains(texto.ToLower()))
                 {
                     MessageBox.Show("A palavra já está no dicionario!", "Dicionario",
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -163,7 +174,11 @@ namespace WinFormsApp1
         private string[] checkWords()
         {
             string text = richTextBox1.Text;
-            string[] words = Regex.Matches(text, @"([a-z]|[A-Z]|[0-9])\w+").Cast<Match>().Select(m => m.Value).ToArray();
+            string[] words = Regex.Matches(text, @"([a-z]*|[A-Z]*|[0-9]*)\w+").Cast<Match>().Select(m => m.Value).ToArray();
+            if (_Dicionario == null)
+            {
+                return words;
+            }
             return words.Where(word => !_Dicionario.Contains(word.ToString().ToLower())).ToArray();
         }
 
@@ -214,9 +229,12 @@ namespace WinFormsApp1
         {
             using (TextWriter tw = new StreamWriter("dicionario.txt"))
             {
-                foreach (string word in _Dicionario)
+                if (_Dicionario != null)
                 {
-                    tw.WriteLine(word);
+                    foreach (string word in _Dicionario)
+                    {
+                        tw.WriteLine(word);
+                    }
                 }
             }
         }
