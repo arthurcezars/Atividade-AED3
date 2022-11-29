@@ -93,7 +93,7 @@ namespace WinFormsApp1
          */
         private void OrdenaDicionario()
         {
-            _Dicionario = new BubleSort().Sortear(_Dicionario);
+            _Dicionario = new ShakeSort().Sortear(_Dicionario);
         }
 
         /*
