@@ -14,7 +14,7 @@ namespace WinFormsApp1
 {
     public partial class Form1 : Form
     {
-        private List<string> _Dicionario;
+        private string[] _Dicionario;
         public Form1()
         {
             InitializeComponent();
@@ -40,9 +40,9 @@ namespace WinFormsApp1
         /*
          * Função para carregar o dicionario.
          */
-        private List<string> CarregaDicionario()
+        private string[] CarregaDicionario()
         {
-            List<string> dicionario = new List<string>();
+            string[] dicionario = null;
             try
             {
                 using (TextReader tr = new StreamReader("dicionario.txt"))
@@ -50,7 +50,17 @@ namespace WinFormsApp1
                     string line = "";
                     while ((line = tr.ReadLine()) != null)
                     {
-                        dicionario.Add(line.Trim());
+                        if (dicionario == null)
+                        {
+                            dicionario = new string[] { line.Trim() };
+                        }
+                        else
+                        {
+                            string[] temp = new string[dicionario.Length + 1];
+                            dicionario.CopyTo(temp, 0);
+                            temp[temp.Length - 1] = line.Trim();
+                            dicionario = temp;
+                        }
                     }
                 }
             }
@@ -58,6 +68,21 @@ namespace WinFormsApp1
             { }
 
             return dicionario;
+        }
+
+        private void AdicionaDicionario(string word)
+        {
+            if (_Dicionario == null)
+            {
+                _Dicionario = new string[] { word };
+            }
+            else
+            {
+                string[] temp = new string[_Dicionario.Length + 1];
+                _Dicionario.CopyTo(temp, 0);
+                temp[temp.Length - 1] = word.Trim();
+                _Dicionario = temp;
+            }
         }
 
         /*
@@ -111,7 +136,7 @@ namespace WinFormsApp1
                 }
                 else
                 {
-                    _Dicionario.Add(texto.ToLower());
+                    AdicionaDicionario(texto.ToLower());
                     MessageBox.Show("Adicionado");
                 }
             }
