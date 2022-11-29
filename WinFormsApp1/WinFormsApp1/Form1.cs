@@ -74,7 +74,7 @@ namespace WinFormsApp1
         {
             if (_Dicionario == null)
             {
-                _Dicionario = new string[] { word };
+                _Dicionario = new string[] { word.Trim() };
             }
             else
             {
