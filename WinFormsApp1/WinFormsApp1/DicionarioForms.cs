@@ -16,7 +16,13 @@ namespace WinFormsApp1
         {
             InitializeComponent();
 
-            dataGridView1.DataSource = dicionario.ToList();
+            DataTable dt = new DataTable();
+            dt.Columns.Add("Palavra");
+            foreach (string palavra in dicionario)
+            {
+                dt.Rows.Add(palavra);
+            }    
+            dataGridView1.DataSource = dt;
         }
     }
 }
