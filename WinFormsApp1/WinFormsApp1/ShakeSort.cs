@@ -8,44 +8,8 @@ namespace WinFormsApp1
 {
     internal class ShakeSort
     {
-        private void Troca(ref string word1, ref string word2)
-        {
-            var temp = word1;
-            word1 = word2; 
-            word2 = temp;
-        }
-
         public string[] Sortear(string[] vetor)
         {
-            //for (int i = 0; i < vetor.Length / 2; i++)
-            //{
-            //    bool flagTroca = false;
-            //    // passa da esqueda para a direita
-            //    for (int j = i; j < vetor.Length - i; j++)
-            //    {
-            //        if (string.Compare(vetor[j], vetor[j + 1]) > 0)
-            //        {
-            //            Troca(ref vetor[j], ref vetor[j + 1]);
-            //            flagTroca = true;
-            //        }
-            //    }
-
-            //    // passa da direita para esquerda
-            //    for (int j = vetor.Length - 2 - i; j > i; j--)
-            //    {
-            //        if (string.Compare(vetor[j - 1], vetor[j]) > 0)
-            //        {
-            //            Troca(ref vetor[j - 1], ref vetor[j]);
-            //            flagTroca = true;
-            //        }
-            //    }
-
-            //    if (!flagTroca)
-            //    {
-            //        break;
-            //    }
-            //}
-
             string atual, prox;
             int inicioLista = 0, finalLista = vetor.Length - 1;
             bool troca = true;

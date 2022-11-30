@@ -1,5 +1,9 @@
 a
+á
 alô
 b
 c
 d
+h
+olá
+um

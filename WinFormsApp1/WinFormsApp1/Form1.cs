@@ -19,6 +19,8 @@ namespace WinFormsApp1
         {
             InitializeComponent();
 
+            label1.Text = "";
+
             _Dicionario = CarregaDicionario();
             CriaContextMenuStrip();
             ConfiguraOpenFileDialog();
@@ -93,7 +95,26 @@ namespace WinFormsApp1
          */
         private void OrdenaDicionario()
         {
+            string tempoDeExecucao = "";
+
+            DateTime inicio = DateTime.Now;
+            new BubleSort().Sortear(_Dicionario);
+            DateTime fim = DateTime.Now;
+
+            TimeSpan tempo = fim - inicio;
+
+            tempoDeExecucao = "BubleSort: " + tempo.TotalSeconds + " segundos\n";
+
+            inicio = DateTime.Now;
             _Dicionario = new ShakeSort().Sortear(_Dicionario);
+            fim = DateTime.Now;
+
+            tempo = fim - inicio;
+
+            tempoDeExecucao += "ShakeSort: " + tempo.TotalSeconds + " segundos\n";
+            tempoDeExecucao += "N.º de palavras no dicionário: " + _Dicionario.Length;
+
+            label1.Text = tempoDeExecucao;
         }
 
         /*
@@ -161,9 +182,9 @@ namespace WinFormsApp1
             RichTextBox txtBox = (RichTextBox)sender;
             char[] strDataAsChars = txtBox.Text.ToCharArray();
             int i = 0;
-            for (i = txtBox.SelectionStart - 1; ((i >= 0) && Regex.IsMatch(strDataAsChars[i].ToString(), @"([a-z]|[A-Z]|[0-9])")); --i) ;
+            for (i = txtBox.SelectionStart - 1; ((i >= 0) && Regex.IsMatch(strDataAsChars[i].ToString(), @"([a-z]|[A-Z]|[à-ü]|[À-Ü]|[0-9])")); --i) ;
             int selBegin = i + 1;
-            for (i = txtBox.SelectionStart; ((i < strDataAsChars.Length) && Regex.IsMatch(strDataAsChars[i].ToString(), @"([a-z]|[A-Z]|[0-9])")); ++i) ;
+            for (i = txtBox.SelectionStart; ((i < strDataAsChars.Length) && Regex.IsMatch(strDataAsChars[i].ToString(), @"([a-z]|[A-Z]|[à-ü]|[À-Ü]|[0-9])")); ++i) ;
             int selEnd = i;
             txtBox.Select(selBegin, selEnd - selBegin);
         }
@@ -174,7 +195,7 @@ namespace WinFormsApp1
         private string[] checkWords()
         {
             string text = richTextBox1.Text;
-            string[] words = Regex.Matches(text, @"([a-z]*|[A-Z]*|[0-9]*)\w+").Cast<Match>().Select(m => m.Value).ToArray();
+            string[] words = Regex.Matches(text, @"([a-z]|[A-Z]|[à-ü]|[À-Ü]|[0-9])*").Cast<Match>().Select(m => m.Value).ToArray();
             if (_Dicionario == null)
             {
                 return words;
