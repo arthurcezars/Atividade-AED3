@@ -206,7 +206,7 @@ namespace WinFormsApp1
         private string[] checkWords()
         {
             string text = richTextBox1.Text;
-            string[] words = Regex.Matches(text, @"([a-z]|[A-Z]|[à-ü]|[À-Ü]|[0-9])*").Cast<Match>().Select(m => m.Value).ToArray();
+            string[] words = Regex.Matches(text, @"([a-z]|[A-Z]|[à-ü]|[À-Ü]|[0-9])*").Cast<Match>().Select(m => m.Value).Where(m => m != "").ToArray();
             if (_Dicionario == null)
             {
                 return words;
@@ -223,12 +223,16 @@ namespace WinFormsApp1
             richTextBox1.Select(0, richTextBox1.Text.Length);
             richTextBox1.SelectionColor = Color.Black;
 
+            int inicioPesquisa = 0;
+
+
             string[] words = checkWords();
             foreach(string word in words)
             {
-                int index = richTextBox1.Text.IndexOf(word);
+                int index = richTextBox1.Text.IndexOf(word, inicioPesquisa);
                 richTextBox1.Select(index, word.Length);
                 richTextBox1.SelectionColor = Color.Red;
+                inicioPesquisa = index + word.Length - 1;
             }
         }
 
