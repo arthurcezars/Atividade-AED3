@@ -6,4 +6,6 @@ c
 d
 h
 olá
+qualquer
+quatro
 um

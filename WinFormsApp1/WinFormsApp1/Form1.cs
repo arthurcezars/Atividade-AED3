@@ -35,8 +35,19 @@ namespace WinFormsApp1
         {
             ContextMenuStrip cm = new ContextMenuStrip();
             cm.Items.Add("Adicionar ao dicionario ");
-            cm.ItemClicked += new ToolStripItemClickedEventHandler(AdicionarDicionario);
+            //cm.ItemClicked += new ToolStripItemClickedEventHandler(AdicionarDicionario);
+            cm.Items[0].Click += new EventHandler(AdicionarDicionario);
+            cm.Items.Add("Vizualizar Dicionário ");
+            cm.Items[1].Click += new EventHandler(VizualizarDicionario);
             richTextBox1.ContextMenuStrip = cm;
+        }
+
+        private void VizualizarDicionario(object sender, EventArgs e)
+        {
+            DicionarioForms telaDicionario = new DicionarioForms(_Dicionario);
+            this.Hide();
+            telaDicionario.ShowDialog();
+            this.Show();
         }
 
         /*
@@ -153,17 +164,17 @@ namespace WinFormsApp1
         /*
          * Metodo responsavel por adicionar a palavra ao dicionario.
          */
-        private void AdicionarDicionario(object sender, ToolStripItemClickedEventArgs e)
+        private void AdicionarDicionario(object sender, EventArgs e)
         {
             string texto = richTextBox1.SelectedText;
-            DialogResult = MessageBox.Show("Você tem certeza que quer adicionar a palavra \"" + texto + "\" ao dicionario?",
-                "Dicionario", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult = MessageBox.Show("Você tem certeza que deseja adicionar a palavra \"" + texto + "\" ao dicionário?",
+                "Dicionário", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (DialogResult == DialogResult.Yes)
             {
                 if (_Dicionario != null && _Dicionario.Contains(texto.ToLower()))
                 {
-                    MessageBox.Show("A palavra já está no dicionario!", "Dicionario",
+                    MessageBox.Show("A palavra já está no dicionario!", "Dicionário",
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 else
