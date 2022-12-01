@@ -14,7 +14,7 @@ namespace WinFormsApp1
 {
     public partial class Form1 : Form
     {
-        private string[] _Dicionario;
+        internal static string[] _Dicionario;
         public Form1()
         {
             InitializeComponent();
@@ -33,13 +33,13 @@ namespace WinFormsApp1
          */
         private void CriaContextMenuStrip()
         {
-            ContextMenuStrip cm = new ContextMenuStrip();
-            cm.Items.Add("Adicionar ao dicionario ");
-            //cm.ItemClicked += new ToolStripItemClickedEventHandler(AdicionarDicionario);
-            cm.Items[0].Click += new EventHandler(AdicionarDicionario);
-            cm.Items.Add("Vizualizar Dicionário ");
-            cm.Items[1].Click += new EventHandler(VizualizarDicionario);
-            richTextBox1.ContextMenuStrip = cm;
+            ContextMenuStrip contextMenuStrip = new ContextMenuStrip();
+            contextMenuStrip.Items.Add("Adicionar ao dicionario ");
+            //contextMenuStrip.ItemClicked += new ToolStripItemClickedEventHandler(AdicionarDicionario);
+            contextMenuStrip.Items[0].Click += new EventHandler(AdicionarDicionario);
+            contextMenuStrip.Items.Add("Vizualizar Dicionário ");
+            contextMenuStrip.Items[1].Click += new EventHandler(VizualizarDicionario);
+            richTextBox1.ContextMenuStrip = contextMenuStrip;
         }
 
         private void VizualizarDicionario(object sender, EventArgs e)
