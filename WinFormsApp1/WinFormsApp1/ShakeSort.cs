@@ -12,22 +12,54 @@ namespace WinFormsApp1
         {
             string atual, prox;
             int inicioLista = 0, finalLista = vetor.Length - 1;
-            bool troca = true;
-            while (troca)
+            bool trocou = true;
+            //while (trocou)
+            //{
+            //    for (int i = inicioLista; i < finalLista; i++)
+            //    {
+            //        if (string.Compare(vetor[i], vetor[i + 1]) > 0)
+            //        {
+            //            atual = vetor[i + 1];
+            //            prox = vetor[i];
+            //            vetor[i] = atual;
+            //            vetor[i + 1] = prox;
+            //        }
+            //    }
+            //    for (int i = finalLista - 1; i > inicioLista; i--)
+            //    {
+            //        if (string.Compare(vetor[i], vetor[i - 1]) < 0)
+            //        {
+            //            atual = vetor[i - 1];
+            //            prox = vetor[i];
+            //            vetor[i - 1] = prox;
+            //            vetor[i] = atual;
+            //        }
+            //    }
+            //    inicioLista++;
+            //    finalLista--;
+            //    if (inicioLista >= finalLista)
+            //    {
+            //        Console.Write("[ " + vetor[0]);
+            //        for (int i = 1; i < vetor.Length; i++)
+            //        {
+            //            Console.Write(", " + vetor[i]);
+            //        }
+            //        Console.Write(" ]");
+            //        trocou = false;
+            //    }
+            //}
+            while (trocou)
             {
+                trocou = false;
                 for (int i = inicioLista; i < finalLista; i++)
                 {
                     if (string.Compare(vetor[i], vetor[i + 1]) > 0)
                     {
                         atual = vetor[i + 1];
                         prox = vetor[i];
-                        Console.WriteLine("->->->->->DIREITA->->->->");
-                        Console.WriteLine(
-                            "atual   prox\n" +
-                            $" {atual}       {prox}\n" +
-                            "-------------");
                         vetor[i] = atual;
                         vetor[i + 1] = prox;
+                        trocou = true;
                     }
                 }
                 for (int i = finalLista - 1; i > inicioLista; i--)
@@ -36,18 +68,13 @@ namespace WinFormsApp1
                     {
                         atual = vetor[i - 1];
                         prox = vetor[i];
-                        Console.WriteLine("<-<-<-<-<-ESQUERDA<-<-<-<-");
-                        Console.WriteLine(
-                            "anterior   atual\n" +
-                            $" {atual}       {prox}\n" +
-                            "-------------");
                         vetor[i - 1] = prox;
                         vetor[i] = atual;
+                        trocou = true;
                     }
                 }
-                inicioLista++;
-                finalLista--;
-                if (inicioLista >= finalLista)
+
+                if (!trocou)
                 {
                     Console.Write("[ " + vetor[0]);
                     for (int i = 1; i < vetor.Length; i++)
@@ -55,8 +82,11 @@ namespace WinFormsApp1
                         Console.Write(", " + vetor[i]);
                     }
                     Console.Write(" ]");
-                    troca = false;
+                    break;
                 }
+
+                finalLista--;
+                inicioLista++;
             }
 
             return vetor;
