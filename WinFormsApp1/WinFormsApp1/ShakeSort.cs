@@ -13,41 +13,6 @@ namespace WinFormsApp1
             string atual, prox;
             int inicioLista = 0, finalLista = vetor.Length - 1;
             bool trocou = true;
-            //while (trocou)
-            //{
-            //    for (int i = inicioLista; i < finalLista; i++)
-            //    {
-            //        if (string.Compare(vetor[i], vetor[i + 1]) > 0)
-            //        {
-            //            atual = vetor[i + 1];
-            //            prox = vetor[i];
-            //            vetor[i] = atual;
-            //            vetor[i + 1] = prox;
-            //        }
-            //    }
-            //    for (int i = finalLista - 1; i > inicioLista; i--)
-            //    {
-            //        if (string.Compare(vetor[i], vetor[i - 1]) < 0)
-            //        {
-            //            atual = vetor[i - 1];
-            //            prox = vetor[i];
-            //            vetor[i - 1] = prox;
-            //            vetor[i] = atual;
-            //        }
-            //    }
-            //    inicioLista++;
-            //    finalLista--;
-            //    if (inicioLista >= finalLista)
-            //    {
-            //        Console.Write("[ " + vetor[0]);
-            //        for (int i = 1; i < vetor.Length; i++)
-            //        {
-            //            Console.Write(", " + vetor[i]);
-            //        }
-            //        Console.Write(" ]");
-            //        trocou = false;
-            //    }
-            //}
             while (trocou)
             {
                 trocou = false;

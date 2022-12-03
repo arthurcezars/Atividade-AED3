@@ -58,20 +58,20 @@ namespace WinFormsApp1
             string[] dicionario = null;
             try
             {
-                using (TextReader tr = new StreamReader("dicionario.txt"))
+                using (TextReader tr = new StreamReader("dicionario.txt", Encoding.UTF8))
                 {
                     string line = "";
                     while ((line = tr.ReadLine()) != null)
                     {
                         if (dicionario == null)
                         {
-                            dicionario = new string[] { line.Trim() };
+                            dicionario = new string[] { line.Trim().ToLower() };
                         }
                         else
                         {
                             string[] temp = new string[dicionario.Length + 1];
                             dicionario.CopyTo(temp, 0);
-                            temp[temp.Length - 1] = line.Trim();
+                            temp[temp.Length - 1] = line.Trim().ToLower();
                             dicionario = temp;
                         }
                     }
@@ -243,7 +243,7 @@ namespace WinFormsApp1
             {
                 if (Path.GetExtension(openFileDialog1.FileName) == ".txt")
                 {
-                    richTextBox1.LoadFile(openFileDialog1.FileName, RichTextBoxStreamType.PlainText);
+                    richTextBox1.Text = File.ReadAllText(openFileDialog1.FileName, Encoding.UTF8);
                 }
             }
         }
